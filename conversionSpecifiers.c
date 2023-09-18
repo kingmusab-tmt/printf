@@ -38,7 +38,7 @@ void _convert_binary(va_list b)
 	free(binaryValue);
 }
 /**
- * pointer_spec - function to handle pointer specifiers
+ * _pointer_spec - function to handle pointer specifiers
  * @p: format p
  */
 void _pointer_spec(va_list p)
@@ -63,7 +63,7 @@ void _pointer_spec(va_list p)
 		} else
 		{
 			hex_digits = "0123456789abcdef";
-			
+
 			index = 0;
 
 			while (value > 0)
@@ -77,7 +77,7 @@ void _pointer_spec(va_list p)
 			}
 		}
 	} else
-	{ 
+	{
 		_putchar('N');
 		_putchar('U');
 		_putchar('L');

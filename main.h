@@ -4,14 +4,6 @@
 #include <stdarg.h>
 #define BUFFER_SIZE 1024
 #include <stdlib.h>
-/**
- * struct Buffer - structure to hold buffer infor
- */
-typedef struct
-{
-	char buffer[BUFFER_SIZE];
-	int count;
-} Buffer;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
