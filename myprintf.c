@@ -28,12 +28,15 @@ void p_per(va_list p)
 void p_string(va_list s)
 {
 	char *string;
-	int i;
-
+	
 	string = va_arg(s, char*);
-	for (i = 0; string[i] != '\0'; i++)
+	if (string)
 	{
-		_putchar(string[i]);
+		while (*string)
+		{
+			_putchar(*string);
+			string++;
+		}
 	}
 }
 /**
@@ -48,7 +51,7 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	while (*format)
+	while (format && *format)
 	{
 		if (*format == '%')
 		{
