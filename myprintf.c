@@ -43,7 +43,7 @@ void p_string(va_list s)
 		_putchar('U');
 		_putchar('L');
 		_putchar('L');
-		count += 4;
+		string += 4;
 	}
 }
 /**
