@@ -28,7 +28,7 @@ void p_per(va_list p)
 void p_string(va_list s)
 {
 	char *string;
-	
+
 	string = va_arg(s, char*);
 	if (string)
 	{
@@ -37,6 +37,13 @@ void p_string(va_list s)
 			_putchar(*string);
 			string++;
 		}
+	} else
+	{
+		_putchar('N');
+		_putchar('U');
+		_putchar('L');
+		_putchar('L');
+		count += 4;
 	}
 }
 /**
