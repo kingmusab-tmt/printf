@@ -5,7 +5,7 @@
  * _convert_binary - function that handle specifiers b;
  * @b: format b
  */
-void _convert_binary(va_list b)
+void _convert_binary(va_list b, int *count)
 {
 	unsigned int number, temp;
 	int bitSize;
@@ -34,6 +34,7 @@ void _convert_binary(va_list b)
 	for (i = 0; i < bitSize; i++)
 	{
 		_putchar(binaryValue[i]);
+		(*count)++
 	}
 	free(binaryValue);
 }
@@ -41,13 +42,14 @@ void _convert_binary(va_list b)
  * _pointer_spec - function to handle pointer specifiers
  * @p: format p
  */
-void _pointer_spec(va_list p)
+void _pointer_spec(va_list p, int *count)
 {
 	void *hexaValue;
 	int i = 0;
 	char *hex_digits;
 	char buffer[16];
 	int index;
+	char *nullValue;
 	unsigned long int value;
 
 	hexaValue = va_arg(p, void *);
@@ -74,13 +76,16 @@ void _pointer_spec(va_list p)
 			for (i = index - 1; i >= 0; i--)
 			{
 				_putchar(buffer[i]);
+				(*count)++;
 			}
 		}
 	} else
 	{
-		_putchar('N');
-		_putchar('U');
-		_putchar('L');
-		_putchar('L');
-	}
+		nullValue = "(null)";
+		while (*nullValue)
+		{
+			_putchar(*nullValue);
+			nullValue++;
+			(*count)++;
+		}
 }
