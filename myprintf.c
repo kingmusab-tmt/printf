@@ -32,6 +32,7 @@ void p_per(va_list p)
 void p_string(va_list s, int *count)
 {
 	char *string;
+	char *nullString;
 
 	string = va_arg(s, char*);
 	if (string)
@@ -40,6 +41,15 @@ void p_string(va_list s, int *count)
 		{
 			_putchar(*string);
 			string++;
+			(*count)++;
+		}
+	} else
+	{
+		nullString = "(null)";
+		while (*nullString)
+		{
+			_putchar(*nullString);
+			nullString++;
 			(*count)++;
 		}
 	}
