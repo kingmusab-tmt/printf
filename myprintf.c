@@ -1,15 +1,18 @@
 #include "main.h"
 #include "stdarg.h"
+#include "stdio.h"
 /**
  * p_char - function to print character
  * @c: character to be printed
+ * @count: count character
  */
-void p_char(va_list c)
+void p_char(va_list c, int *count)
 {
 	char  character;
 
 	character = va_arg(c, int);
 	_putchar(character);
+	(*count)++;
 }
 /**
  * p_per - function to print unused format
@@ -24,8 +27,9 @@ void p_per(va_list p)
 /**
  * p_string - function for printing string
  * @s: string character to be printed
+ * @count: count character
  */
-void p_string(va_list s)
+void p_string(va_list s, int *count)
 {
 	char *string;
 
@@ -36,6 +40,7 @@ void p_string(va_list s)
 		{
 			_putchar(*string);
 			string++;
+			(*count)++;
 		}
 	}
 }
@@ -60,20 +65,19 @@ int _printf(const char *format, ...)
 			{
 				break;
 			}
-			count += (*format == 'c') ? (p_char(ap), 1) :
-				(*format == 's') ? (p_string(ap), 1) :
+			count += (*format == 'c') ? (p_char(ap, &count), 0) :
+				(*format == 's') ? (p_string(ap, &count), 0) :
 				(*format == '%') ? (p_per(ap), 1) :
 				(*format == 'b') ? (_convert_binary(ap), 1) :
 				(*format == 'p') ? (_pointer_spec(ap), 1) :
 				(_putchar('%'), _putchar(*format), 2);
 		} else
 		{
-			 _putchar(*format);
-			 count++;
+			_putchar(*format);
+			count++;
 		}
 		format++;
 	}
-
 	va_end(ap);
 	return (count);
 }
