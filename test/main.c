@@ -14,6 +14,8 @@ int main(void)
 	void *addr;
 
 	ui = 42;
+	_printf(NULL);
+	printf(NULL);
 	len = _printf("%s", "This sentence is retrieved from va_args!\n");
 	len2 = printf("%s", "This sentence is retrieved from va_args!\n");
 	addr = (void *)0x7ffe637541f0;

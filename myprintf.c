@@ -66,6 +66,10 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 	count = 0;
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	while (format && *format)
 	{
 		if (*format == '%')
@@ -73,6 +77,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 			{
+				_putchar('%');
 				break;
 			}
 			count += (*format == 'c') ? (p_char(ap, &count), 0) :
