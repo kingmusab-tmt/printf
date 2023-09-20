@@ -43,7 +43,6 @@ void p_string(va_list s)
 		_putchar('U');
 		_putchar('L');
 		_putchar('L');
-		string += 4;
 	}
 }
 /**
@@ -54,10 +53,10 @@ void p_string(va_list s)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int count = 0;
+	int count;
 
 	va_start(ap, format);
-
+	count = 0;
 	while (format && *format)
 	{
 		if (*format == '%')
