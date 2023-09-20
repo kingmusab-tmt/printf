@@ -83,8 +83,8 @@ int _printf(const char *format, ...)
 			count += (*format == 'c') ? (p_char(ap, &count), 0) :
 				(*format == 's') ? (p_string(ap, &count), 0) :
 				(*format == '%') ? (p_per(ap), 1) :
-				(*format == 'b') ? (_convert_binary(ap), 0) :
-				(*format == 'p') ? (_pointer_spec(ap), 0) :
+				(*format == 'b') ? (_convert_binary(ap, &count), 0) :
+				(*format == 'p') ? (_pointer_spec(ap, &count), 0) :
 				(_putchar('%'), _putchar(*format), 2);
 		} else
 		{

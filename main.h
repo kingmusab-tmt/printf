@@ -7,7 +7,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-void _convert_binary(va_list b);
-void _pointer_spec(va_list p);
+void _convert_binary(va_list b, int *count);
+void _pointer_spec(va_list p, int *count);
 
 #endif

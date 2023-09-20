@@ -4,14 +4,14 @@
 /**
  * _convert_binary - function that handle specifiers b;
  * @b: format b
+ * @count: counter
  */
 void _convert_binary(va_list b, int *count)
 {
 	unsigned int number, temp;
 	int bitSize;
 	char *binaryValue;
-	int index;
-	int i;
+	int index, i;
 
 	bitSize = 0;
 	number = va_arg(b, unsigned int);
@@ -30,11 +30,10 @@ void _convert_binary(va_list b, int *count)
 		number /= 2;
 		index--;
 	}
-
 	for (i = 0; i < bitSize; i++)
 	{
 		_putchar(binaryValue[i]);
-		(*count)++
+		(*count)++;
 	}
 
 	free(binaryValue);
@@ -42,33 +41,29 @@ void _convert_binary(va_list b, int *count)
 /**
  * _pointer_spec - function to handle pointer specifiers
  * @p: format p
+ * @count: counter
  */
 void _pointer_spec(va_list p, int *count)
 {
-	void *hexaValue;
-	int i = 0;
 	char *hex_digits;
-	char buffer[16];
-	int index;
 	char *nullValue;
+	char buffer[16];
+	int index, i;
 	unsigned long int value;
 
-	hexaValue = va_arg(p, void *);
-	if (hexaValue != NULL)
+	index = i = 0;
+	va_arg(p, void *);
+	if (va_arg(p, void *) != NULL)
 	{
 		_putchar('0');
 		_putchar('x');
-
-		value = (unsigned long int)hexaValue;
+		value = (unsigned long int)va_arg(p, void*);
 		if (value == 0)
 		{
 			_putchar('0');
 		} else
 		{
 			hex_digits = "0123456789abcdef";
-
-			index = 0;
-
 			while (value > 0)
 			{
 				buffer[index++] = hex_digits[value % 16];
@@ -89,4 +84,5 @@ void _pointer_spec(va_list p, int *count)
 			nullValue++;
 			(*count)++;
 		}
+	}
 }
