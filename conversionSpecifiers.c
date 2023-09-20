@@ -16,18 +16,18 @@ void _convert_binary(va_list b, int *count)
 	bitSize = 0;
 	number = va_arg(b, unsigned int);
 	temp = number;
-	while (number > 0)
-	{
-		bitSize++;
-		number /= 2;
-	}
-	binaryValue = (char *)malloc(bitSize * sizeof(int));
-	binaryValue[bitSize] = '\0';
-	index = bitSize - 1;
 	while (temp > 0)
 	{
-		binaryValue[index] = temp % 2 + '0';
+		bitSize++;
 		temp /= 2;
+	}
+	binaryValue = (char *)malloc((bitSize + 1) * sizeof(int));
+	binaryValue[bitSize] = '\0';
+	index = bitSize - 1;
+	while (number > 0)
+	{
+		binaryValue[index] = number % 2 + '0';
+		number /= 2;
 		index--;
 	}
 
@@ -36,6 +36,7 @@ void _convert_binary(va_list b, int *count)
 		_putchar(binaryValue[i]);
 		(*count)++
 	}
+
 	free(binaryValue);
 }
 /**
