@@ -78,7 +78,7 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 			{
 				_putchar('%');
-				break;
+				count++;
 			}
 			count += (*format == 'c') ? (p_char(ap, &count), 0) :
 				(*format == 's') ? (p_string(ap, &count), 0) :
