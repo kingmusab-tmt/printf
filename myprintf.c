@@ -37,12 +37,6 @@ void p_string(va_list s)
 			_putchar(*string);
 			string++;
 		}
-	} else
-	{
-		_putchar('N');
-		_putchar('U');
-		_putchar('L');
-		_putchar('L');
 	}
 }
 /**
